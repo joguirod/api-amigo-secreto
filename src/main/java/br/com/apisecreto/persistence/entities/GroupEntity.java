@@ -22,6 +22,8 @@ public class GroupEntity {
     private String description;
     @Column(nullable = false)
     private String secretPhrase;
+    @Column(nullable = true)
+    private boolean alreadyMatchedParticipants = false;
     // um grupo tem vários usuários, usuários podem participar de vários grupos
     @OneToMany
     private List<UserEntity> participantUsers;
@@ -63,6 +65,14 @@ public class GroupEntity {
 
     public void setSecretPhrase(String secretPhrase) {
         this.secretPhrase = secretPhrase;
+    }
+
+    public boolean isAlreadyMatchedParticipants() {
+        return alreadyMatchedParticipants;
+    }
+
+    public void setAlreadyMatchedParticipants(boolean alreadyMatchedParticipants) {
+        this.alreadyMatchedParticipants = alreadyMatchedParticipants;
     }
 
     public List<UserEntity> getParticipantUsers() {

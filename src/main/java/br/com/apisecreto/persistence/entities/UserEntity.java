@@ -3,9 +3,10 @@ package br.com.apisecreto.persistence.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Objects;
+
 @Entity(name = "userEntity")
 @Table(name = "userEntity")
-@NoArgsConstructor
 @AllArgsConstructor
 public class UserEntity {
     @Id
@@ -19,12 +20,19 @@ public class UserEntity {
     private String password;
     @Column(nullable = false)
     private String preferences;
+    @OneToOne
+    private UserEntity matchedUser;
+    @ManyToOne
+    private GroupEntity groupJoined;
 
     public UserEntity(String name, String email, String password, String preferences) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.preferences = preferences;
+    }
+
+    public UserEntity() {
     }
 
     public Long getId() {
@@ -65,5 +73,33 @@ public class UserEntity {
 
     public void setPreferences(String preferences) {
         this.preferences = preferences;
+    }
+
+    public UserEntity getMatchedUser() {
+        return matchedUser;
+    }
+
+    public void setMatchedUser(UserEntity matchedUser) {
+        this.matchedUser = matchedUser;
+    }
+
+    public GroupEntity getGroupJoined() {
+        return groupJoined;
+    }
+
+    public void setGroupJoined(GroupEntity groupJoined) {
+        this.groupJoined = groupJoined;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }

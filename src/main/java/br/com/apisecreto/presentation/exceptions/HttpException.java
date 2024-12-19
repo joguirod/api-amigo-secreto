@@ -7,4 +7,9 @@ public class HttpException extends Exception {
         super(message);
         this.statusCode = statusCode;
     }
+
+    public HttpException() {
+        super("Internal server error. Try again later.");
+        this.statusCode = 500;
+    }
 }

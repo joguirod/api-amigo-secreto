@@ -5,6 +5,9 @@ public class User {
     private String email;
     private String password;
     private String preferences;
+    // para quem deverá ser dado o presente
+    private User matchedUser;
+    private Group groupJoined;
 
     public User() {
     }
@@ -46,5 +49,21 @@ public class User {
 
     public void setPreferences(String preferences) {
         this.preferences = preferences;
+    }
+
+    public User getMatchedUser() {
+        return matchedUser;
+    }
+
+    public void setMatchedUser(User matchedUser) {
+        this.matchedUser = matchedUser;
+    }
+
+    public Group getGroupJoined() {
+        return groupJoined;
+    }
+
+    public void setGroupJoined(Group groupJoined) {
+        this.groupJoined = groupJoined;
     }
 }

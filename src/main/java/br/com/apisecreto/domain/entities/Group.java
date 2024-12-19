@@ -7,6 +7,7 @@ public class Group {
     private String name;
     private String description;
     private String secretPhrase;
+    private boolean alreadyMatchedParticipants = false;
     private List<User> users;
 
     public Group() {
@@ -56,5 +57,13 @@ public class Group {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public boolean isAlreadyMatchedParticipants() {
+        return alreadyMatchedParticipants;
+    }
+
+    public void setAlreadyMatchedParticipants(boolean alreadyMatchedParticipants) {
+        this.alreadyMatchedParticipants = alreadyMatchedParticipants;
     }
 }

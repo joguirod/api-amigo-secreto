@@ -1,4 +1,4 @@
-package br.com.apisecreto.application.usecase;
+package br.com.apisecreto.application;
 
 import br.com.apisecreto.domain.entities.Group;
 import br.com.apisecreto.domain.entities.User;
@@ -32,7 +32,6 @@ public class GroupMapper {
         List<User> users = groupEntity.getParticipantUsers().stream()
                 .map(userMapper::toDomainEntity)
                 .toList();
-
         group.setUsers(users);
 
         return group;

@@ -1,5 +1,6 @@
 package br.com.apisecreto.domain.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Group {
@@ -15,6 +16,7 @@ public class Group {
         this.name = name;
         this.description = description;
         this.secretPhrase = secretPhrase;
+        this.users = new ArrayList<User>();
     }
 
     public Group(String name, String description, String secretPhrase, List<User> users) {

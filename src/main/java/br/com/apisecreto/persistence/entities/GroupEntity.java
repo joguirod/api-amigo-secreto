@@ -1,23 +1,21 @@
 package br.com.apisecreto.persistence.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-@Entity
-@Table(name="group")
-@Data
+@Entity(name="groupEntity")
+@Table(name="groupEntity")
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 public class GroupEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long groupId;
+    private UUID groupId;
     @Column(nullable = false)
     private String name;
     @Column(nullable = true)
@@ -32,6 +30,47 @@ public class GroupEntity {
         this.name = name;
         this.description = description;
         this.secretPhrase = secretPhrase;
+        this.participantUsers = new ArrayList<>();
+    }
+
+    public UUID getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(UUID groupId) {
+        this.groupId = groupId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSecretPhrase() {
+        return secretPhrase;
+    }
+
+    public void setSecretPhrase(String secretPhrase) {
+        this.secretPhrase = secretPhrase;
+    }
+
+    public List<UserEntity> getParticipantUsers() {
+        return participantUsers;
+    }
+
+    public void setParticipantUsers(List<UserEntity> participantUsers) {
+        this.participantUsers = participantUsers;
     }
 }
 

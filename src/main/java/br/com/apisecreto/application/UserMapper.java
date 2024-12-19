@@ -1,4 +1,4 @@
-package br.com.apisecreto.application.usecase;
+package br.com.apisecreto.application;
 
 import br.com.apisecreto.domain.entities.User;
 import br.com.apisecreto.persistence.entities.UserEntity;

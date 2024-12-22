@@ -2,4 +2,5 @@
 
 Nós da dupla Zé & João fizemos a nossa api usando Java e Spring Boot. Optamos por usar abstrações para use cases. Criamos as entidades e use cases dentro do dominio na aplicação e também na camada de persistência, onde na camada de persistência utilizamos os atributos das entidades de domínio mas com detalhes fornecidos pelo framework utilizado. Tentamos utilizar Autenticação para Login do usuário. Tivemos pequenos problemas com rotas. O fato de termos criados dois "tipos" de entidades, gerou a necessidade de criar uma classe mapeadora, gerando algumas idas e voltas que não são muito legais, então chegamos na conclusão que "contaminar" o domínio com detalhes do framework que faz a integração/mapeamento com o banco vale mais a pena do que o contrário. Concluimos também que um projeto pequeno como esse não necessita da adoção de uma arquitetura como a que usamos, percebeu-se um aumento na complexidade desnecessário para que o projeto esteja seguindo as normas proposta pela arquitetura limpa. Ademais, foi uma boa experiência em dupla e que agregou conhecimento para ambos.
 
-
+## Branch pós-prazo
+Correção de alguns bugs, principalmente com a autenticação e o security filter, sem nenhuma adição de funcionalidades.

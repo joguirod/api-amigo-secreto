@@ -37,6 +37,7 @@ public class GroupConfig {
         return new GetAllGroupsUseCaseImpl(groupRepository, groupMapper);
     }
 
+    @Bean
     GroupParticipantMatchUseCase groupParticipantMatchUseCase(GroupRepository groupRepository, UserRepository userRepository, GroupMapper groupMapper, UserMapper userMapper) {
         return new GroupParticipantMatchUseCaseImpl(groupRepository, userRepository, groupMapper, userMapper);
     }

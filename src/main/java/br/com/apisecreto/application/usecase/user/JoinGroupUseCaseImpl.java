@@ -8,6 +8,7 @@ import br.com.apisecreto.persistence.entities.UserEntity;
 import br.com.apisecreto.persistence.repositories.GroupRepository;
 import br.com.apisecreto.persistence.repositories.UserRepository;
 import br.com.apisecreto.presentation.exceptions.GroupNotFoundException;
+import br.com.apisecreto.presentation.exceptions.UserAlreadyParticipateOneGroupException;
 import br.com.apisecreto.presentation.exceptions.UserNotFoundException;
 
 public class JoinGroupUseCaseImpl implements JoinGroupUseCase {

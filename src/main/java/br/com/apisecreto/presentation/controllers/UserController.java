@@ -10,6 +10,7 @@ import br.com.apisecreto.persistence.entities.UserEntity;
 import br.com.apisecreto.persistence.repositories.UserRepository;
 import br.com.apisecreto.presentation.dtos.UserDTOMapper;
 import br.com.apisecreto.presentation.dtos.response.UserResponseDTO;
+import br.com.apisecreto.presentation.exceptions.UserHaveNoGroupYetException;
 import br.com.apisecreto.presentation.exceptions.UserNotFoundException;
 import br.com.apisecreto.presentation.exceptions.UserNotMatchedYetException;
 import org.springframework.http.HttpStatus;
@@ -41,11 +42,11 @@ public class UserController {
         List<UserResponseDTO> users = getAllUsersUseCase.execute().stream()
                 .map(userDTOMapper::toResponseDTO)
                 .toList();
-        return new ResponseEntity<>(users, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/{userId}/matched")
-    public ResponseEntity<UserResponseDTO> getMatchedUser(@PathVariable Long userId) throws UserNotFoundException, UserNotMatchedYetException {
+    public ResponseEntity<UserResponseDTO> getMatchedUser(@PathVariable Long userId) throws UserNotFoundException, UserNotMatchedYetException, UserHaveNoGroupYetException {
         Optional<UserEntity> userEntity = userRepository.findById(userId);
         if (!userEntity.isPresent()) throw new UserNotFoundException("User with the given ID not found", 404);
         User user = getMatchedUserUseCase.execute(userEntity.get().getEmail());

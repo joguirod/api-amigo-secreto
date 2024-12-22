@@ -39,6 +39,7 @@ public class AuthController {
     @PostMapping("/user/signUp")
     public ResponseEntity<UserResponseDTO> signUp(@RequestBody UserRequestDTO userRequestDTO) throws Exception {
         User user = userDTOMapper.toDomainEntity(userRequestDTO);
+        System.out.println("Usuário: " + user.getPassword());
         userSignUpUseCase.execute(user);
         UserResponseDTO userResponseDTO = userDTOMapper.toResponseDTO(user);
         return new ResponseEntity<>(userResponseDTO, HttpStatus.CREATED);
@@ -46,9 +47,11 @@ public class AuthController {
 
     @PostMapping("/user/signIn")
     public ResponseEntity<UserSignInResponseDTO> login(@RequestBody UserSignInRequestDTO userSignInRequestDTO) throws Exception, HttpException {
+        System.out.println("Entrou no login");
         String token = userSignInUseCase.execute(userSignInRequestDTO.email(), userSignInRequestDTO.password());
         UserEntity userEntity = userRepository.findByEmail(userSignInRequestDTO.email());
         UserSignInResponseDTO userSignInResponseDTO = new UserSignInResponseDTO(userEntity.getName(), token);
+        System.out.println("chegou no return");
         return new ResponseEntity<>(userSignInResponseDTO, HttpStatus.OK);
     }
 }

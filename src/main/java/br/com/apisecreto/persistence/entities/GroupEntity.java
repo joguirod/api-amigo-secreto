@@ -11,7 +11,6 @@ import java.util.UUID;
 @Table(name="groupEntity")
 @EqualsAndHashCode
 @AllArgsConstructor
-@NoArgsConstructor
 public class GroupEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,6 +26,9 @@ public class GroupEntity {
     // um grupo tem vários usuários, usuários podem participar de vários grupos
     @OneToMany
     private List<UserEntity> participantUsers;
+
+    public GroupEntity() {
+    }
 
     public GroupEntity(String name, String description, String secretPhrase) {
         this.name = name;
